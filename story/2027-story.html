@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>2027 Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#3b1a2d;
+  --plum-deep:#25111d;
+  --anthracite:#1c1a1d;
+  --beige:#eee2d1;
+  --beige-soft:rgba(238,226,209,.80);
+  --beige-dim:rgba(238,226,209,.55);
+  --copper:#c4906b;
+  --copper-line:rgba(196,144,107,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:var(--anthracite)}
+.story{position:relative;width:1080px;height:1920px;overflow:hidden;color:var(--beige);
+  background:
+    radial-gradient(90% 55% at 88% 6%, rgba(92,40,68,.55) 0%, rgba(92,40,68,0) 70%),
+    linear-gradient(172deg, var(--plum) 0%, var(--plum-deep) 48%, var(--anthracite) 100%)}
+.grain{position:absolute;inset:0;width:1080px;height:1920px;opacity:.10;mix-blend-mode:overlay;pointer-events:none}
+
+/* ---- Üst: başlık ---- */
+.top{position:absolute;left:96px;right:96px;top:224px}
+.eyebrow{display:flex;align-items:center;gap:22px;font-family:'Jost',sans-serif;font-weight:400;
+  font-size:23px;letter-spacing:.34em;color:var(--copper)}
+.eyebrow i{display:block;width:64px;height:1px;background:var(--copper)}
+.headline{margin-top:40px;font-variant-numeric:lining-nums;font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1}
+.headline .year{display:block;font-size:176px;font-weight:500;color:var(--copper);letter-spacing:-.005em;line-height:.9}
+.headline .l2,.headline .l3{display:block;font-size:var(--hs,76px);color:var(--beige);letter-spacing:.01em}
+.headline .l2{margin-top:22px}
+.headline .l3{margin-top:6px}
+.question{margin-top:40px;font-family:'Jost',sans-serif;font-weight:300;font-size:36px;color:var(--beige-soft);letter-spacing:.01em}
+.question b{font-weight:400;color:var(--beige)}
+
+/* ---- Orta: portre + hikâye cümlesi ---- */
+.arch-wrap{position:absolute;left:452px;top:812px;width:532px;height:600px}
+.arch-line{position:absolute;left:-16px;right:-16px;top:-16px;bottom:-16px;
+  border:1px solid var(--copper-line);border-bottom:0;border-radius:282px 282px 0 0}
+.arch{position:absolute;inset:0;overflow:hidden;border-radius:266px 266px 0 0;
+  background:
+    radial-gradient(60% 45% at 50% 34%, #eadccb 0%, rgba(234,220,203,0) 100%),
+    linear-gradient(180deg,#dccab4 0%,#cdb69d 100%)}
+.arch img{position:absolute;bottom:0;left:-63px;width:675px;height:540px}
+.signature{position:absolute;left:452px;width:532px;top:1440px;text-align:center;
+  font-family:'Jost',sans-serif;font-weight:400;font-size:19px;letter-spacing:.38em;color:var(--beige-dim)}
+
+.side{position:absolute;left:96px;width:322px;top:812px;height:600px;display:flex;flex-direction:column;justify-content:flex-end}
+.side .mark{width:1px;height:150px;background:linear-gradient(180deg,rgba(196,144,107,0),var(--copper));margin-bottom:36px}
+.story-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:46px;line-height:1.16;color:var(--beige)}
+
+/* ---- Alt: CTA (Instagram yanıt çubuğunun üstünde) ---- */
+.bottom{position:absolute;left:96px;right:96px;top:1494px}
+.rule{height:1px;background:linear-gradient(90deg,var(--copper-line),rgba(196,144,107,0))}
+.cta{margin-top:40px;display:flex;align-items:center;gap:22px}
+.cta .dm{font-family:'Jost',sans-serif;font-weight:400;font-size:40px;color:var(--beige)}
+.cta .word{font-family:'Jost',sans-serif;font-weight:500;font-size:32px;letter-spacing:.24em;
+  color:var(--plum-deep);background:var(--beige);padding:12px 20px 12px 28px;border-radius:999px}
+.closing{margin-top:26px;font-family:'Jost',sans-serif;font-weight:300;font-size:30px;line-height:1.5;color:var(--beige-dim)}
+</style>
+</head>
+<body>
+<div class="story" id="story">
+  <svg class="grain" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+  <div class="top">
+    <div class="eyebrow"><i></i>YENİ BİR SAYFA</div>
+    <h1 class="headline">
+      <span class="year">2027’YE</span>
+      <span class="l2">FARKLI BİR BAŞLANGIÇ</span>
+      <span class="l3">YAPMAYA NE DERSİN?</span>
+    </h1>
+    <p class="question">Alternatif iş fikirlerine <b>açık mısın?</b></p>
+  </div>
+
+  <div class="side">
+    <div class="mark"></div>
+    <p class="story-line">Belki de yeni bir hikâyenin başlangıcındasın.</p>
+  </div>
+
+  <div class="arch-wrap">
+    <div class="arch-line"></div>
+    <div class="arch"><img src="portre.png" alt="Murat Zorluoğlu"></div>
+  </div>
+  <div class="signature">MURAT ZORLUOĞLU</div>
+
+  <div class="bottom">
+    <div class="rule"></div>
+    <div class="cta"><span class="dm">DM’den</span><span class="word">“AÇIK”</span><span class="dm">yaz.</span></div>
+    <p class="closing">Tanışalım, konuşalım.<br>Birlikte neler yapabiliriz, bakalım.</p>
+  </div>
+</div>
+</body>
+</html>
