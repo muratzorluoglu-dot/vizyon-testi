@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+reels/episodes/*/mix.wav
+reels/episodes/*/voice/
+reels/episodes/*/preview.mp4
+reels/episodes/*/still_*.png

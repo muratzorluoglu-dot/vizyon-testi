@@ -1,0 +1,194 @@
+{
+  "duration": 63.011,
+  "scenes": [
+    {
+      "id": "hook",
+      "scene": "silfra",
+      "start": 0.0,
+      "voice_start": 0.2,
+      "speech": 2.634,
+      "dur": 3.054,
+      "total": 10,
+      "fullbleed": true,
+      "text": "Bu dalgıç, iki kıta levhası arasında."
+    },
+    {
+      "id": "context",
+      "scene": "title",
+      "start": 3.054,
+      "voice_start": 3.154,
+      "speech": 5.22,
+      "dur": 5.54,
+      "total": 10,
+      "text": "Egzotik olan uzak bir ada değil. Bu on noktada su altının bir kuralı bozuluyor."
+    },
+    {
+      "id": "i1",
+      "scene": "silfra",
+      "start": 8.594,
+      "voice_start": 8.694,
+      "speech": 3.371,
+      "dur": 3.691,
+      "total": 10,
+      "index": 1,
+      "prev_lonlat": null,
+      "zoom_from_full": true,
+      "text": "Silfra, İzlanda. Lavdan süzülen suda görüş yüz metre."
+    },
+    {
+      "id": "i2",
+      "scene": "angelita",
+      "start": 12.285,
+      "voice_start": 12.385,
+      "speech": 4.626,
+      "dur": 4.946,
+      "total": 10,
+      "index": 2,
+      "prev_lonlat": [
+        -21.12,
+        64.26
+      ],
+      "text": "Angelita, Meksika. Otuz metrede bir bulut: hidrojen sülfür katmanı."
+    },
+    {
+      "id": "i3",
+      "scene": "reef",
+      "start": 17.231,
+      "voice_start": 17.331,
+      "speech": 4.186,
+      "dur": 4.506,
+      "total": 10,
+      "index": 3,
+      "prev_lonlat": [
+        -87.45,
+        20.14
+      ],
+      "text": "Raja Ampat. Bilinen mercan türlerinin yaklaşık dörtte üçü burada."
+    },
+    {
+      "id": "i4",
+      "scene": "octopus",
+      "start": 21.737,
+      "voice_start": 21.837,
+      "speech": 3.841,
+      "dur": 4.161,
+      "total": 10,
+      "index": 4,
+      "prev_lonlat": [
+        130.52,
+        -0.5
+      ],
+      "text": "Lembeh Boğazı. Başka hayvanların kılığına giren bir ahtapot."
+    },
+    {
+      "id": "i5",
+      "scene": "wreck",
+      "start": 25.898,
+      "voice_start": 25.998,
+      "speech": 4.406,
+      "dur": 4.726,
+      "total": 10,
+      "index": 5,
+      "prev_lonlat": [
+        125.23,
+        1.45
+      ],
+      "text": "Chuuk Lagünü. 1944'te batan bir filo, şimdi mercan bahçesi."
+    },
+    {
+      "id": "i6",
+      "scene": "sharks",
+      "start": 30.624,
+      "voice_start": 30.724,
+      "speech": 3.668,
+      "dur": 3.988,
+      "total": 10,
+      "index": 6,
+      "prev_lonlat": [
+        151.85,
+        7.42
+      ],
+      "text": "Galápagos. Dünyanın en büyük köpekbalığı biyokütlesi."
+    },
+    {
+      "id": "i7",
+      "scene": "sardines",
+      "start": 34.612,
+      "voice_start": 34.712,
+      "speech": 4.061,
+      "dur": 4.381,
+      "total": 10,
+      "index": 7,
+      "prev_lonlat": [
+        -91.99,
+        1.68
+      ],
+      "text": "Güney Afrika. Kışın milyonlarca sardalya, peşlerinde yunuslar."
+    },
+    {
+      "id": "i8",
+      "scene": "tornado",
+      "start": 38.993,
+      "voice_start": 39.093,
+      "speech": 2.461,
+      "dur": 2.781,
+      "total": 10,
+      "index": 8,
+      "prev_lonlat": [
+        29.55,
+        -31.63
+      ],
+      "text": "Sipadan. Dönen bir barakuda hortumu."
+    },
+    {
+      "id": "i9",
+      "scene": "manta",
+      "start": 41.774,
+      "voice_start": 41.874,
+      "speech": 4.923,
+      "dur": 5.243,
+      "total": 10,
+      "index": 9,
+      "prev_lonlat": [
+        118.63,
+        4.11
+      ],
+      "text": "Socorro. Kanatları yedi metreyi bulabilen mantalar, dalgıçların üstünde."
+    },
+    {
+      "id": "i10",
+      "scene": "steps",
+      "start": 47.017,
+      "voice_start": 47.117,
+      "speech": 6.225,
+      "dur": 6.545,
+      "total": 10,
+      "index": 10,
+      "prev_lonlat": [
+        -110.95,
+        18.78
+      ],
+      "text": "Ve Yonaguni, Japonya. Merdiven gibi kayalar. Çoğu jeolog doğal diyor; tartışma sürüyor."
+    },
+    {
+      "id": "payoff",
+      "scene": "grid",
+      "start": 53.562,
+      "voice_start": 53.662,
+      "speech": 4.233,
+      "dur": 4.553,
+      "total": 10,
+      "text": "Yani egzotik, uzaklık değil. Kuralın bozulduğunu gördüğün an."
+    },
+    {
+      "id": "cta",
+      "scene": "end",
+      "start": 58.115,
+      "voice_start": 58.215,
+      "speech": 3.496,
+      "dur": 4.896,
+      "total": 10,
+      "text": "Seni en çok hangisi şaşırttı? Yoruma numarasını yaz."
+    }
+  ]
+}

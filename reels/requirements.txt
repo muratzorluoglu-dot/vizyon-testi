@@ -1,0 +1,4 @@
+numpy
+scipy
+skia-python
+# isteğe bağlı: google-auth (servis hesabıyla TTS için)

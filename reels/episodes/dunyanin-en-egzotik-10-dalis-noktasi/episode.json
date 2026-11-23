@@ -1,0 +1,315 @@
+{
+  "title": "Dünyanın En Egzotik 10 Dalış Noktası",
+  "brief": {
+    "format": "liste",
+    "scope": "Dünya geneli",
+    "item_type": "dalış noktası",
+    "count": 10,
+    "criterion": "En egzotik (editoryal seçki)",
+    "criterion_basis": "Su altında beklenen bir kuralı bozan doğal ya da tarihî olgu; deneyimin başka yerde yaşanamaması; canlıların veya oluşumların özgünlüğü. Sıra önem sırası değil, anlatı akışıdır."
+  },
+  "angle": "Egzotik olan uzaklık değil: her noktada su altının bildiğimiz bir kuralı bozuluyor.",
+  "viewer_gain": "On noktanın her biri için onu benzersiz yapan tek somut olgu ve bir sonraki dalış rotası için bir kısa liste.",
+  "alt_hooks": [
+    "Soru: Otuz metre derinlikte, suyun içinde bir bulut görebilir misin?",
+    "Gözlem: En berrak dalış sularından biri 3 derece ve bir kıta yarığının içinde."
+  ],
+  "palette": {
+    "bg_top": "#0E3B4A",
+    "bg_bottom": "#06161F",
+    "ink": "#F2EBDD",
+    "muted": "#9FB8BC",
+    "accent": "#E8846B",
+    "aqua": "#7FD3C6",
+    "sand": "#D9C7A3",
+    "deep": "#041018"
+  },
+  "voice": {
+    "provider": "google",
+    "name": "tr-TR-Chirp3-HD-Charon",
+    "fallback": "tr-TR-Wavenet-E",
+    "rate": 1.0
+  },
+  "segments": [
+    {
+      "id": "hook",
+      "scene": "silfra",
+      "text": "Bu dalgıç, iki kıta levhası arasında.",
+      "onscreen": "İki kıta levhası arasında",
+      "kicker": "",
+      "visual": "Tam ekran: siyah bazalt duvarlar arasında buz mavisi yarık, ışık huzmeleri; dalgıç silüeti ayak vuruşlarıyla aşağı süzülür, kabarcıklar yükselir.",
+      "why": "İlk karede vaat: sıra dışı bir su altı. Ses ve görüntü aynı şeyi söyler.",
+      "sfx": "Alçak 'thump' + kabarcık sesleri; sentez müzik yatağı yumuşakça girer."
+    },
+    {
+      "id": "context",
+      "scene": "title",
+      "text": "Egzotik olan uzak bir ada değil. Bu on noktada su altının bir kuralı bozuluyor.",
+      "onscreen": "10 nokta · 10 bozulan kural",
+      "kicker": "Dünya geneli · Editoryal seçki",
+      "visual": "Çapraz geçişle dünya haritası; 10 nokta 0,22 sn arayla numarasıyla yanar. Üstte başlık alttan kayarak gelir.",
+      "why": "Ölçek değişimi: tek noktadan dünyaya. Vaat ve ölçüt görünür olur.",
+      "sfx": "Geçiş whoosh'u; her nokta için yükselen kısa 'tık' (10 adet)."
+    },
+    {
+      "id": "i1",
+      "scene": "silfra",
+      "place": "Silfra",
+      "country": "İzlanda",
+      "lonlat": [
+        -21.12,
+        64.26
+      ],
+      "text": "Silfra, İzlanda. Lavdan süzülen suda görüş yüz metre.",
+      "onscreen": "~100 m görüş",
+      "kicker": "Su 2–4 °C",
+      "visual": "Kanca sahnesindeki yarık tam ekrandan panele küçülür (aynı mekân, şimdi adıyla). Solda 0 m'den '100 m görüş'e uzayan ölçek çizgisi; köşede mini harita İzlanda'yı işaretler.",
+      "why": "Hook'taki sahnenin karşılığı ve adı.",
+      "sfx": "Whoosh + kabarcıklar."
+    },
+    {
+      "id": "i2",
+      "scene": "angelita",
+      "place": "Cenote Angelita",
+      "country": "Meksika",
+      "lonlat": [
+        -87.45,
+        20.14
+      ],
+      "text": "Angelita, Meksika. Otuz metrede bir bulut: hidrojen sülfür katmanı.",
+      "onscreen": "~30 m'de su altı bulutu",
+      "kicker": "Tatlı su / tuzlu su sınırı",
+      "visual": "Dikey mağara kuyusu; dalgıç feneri aşağı iner. Ortada sütlü, dalgalanan bulut katmanı, içinden kuru dallar çıkar; '~30 m' derinlik çizgisi. Mini harita pin'i Meksika'ya kayar.",
+      "why": "Görüşten bulanıklığa: berraklık kuralının tersi.",
+      "sfx": "Whoosh + derin 'thump'."
+    },
+    {
+      "id": "i3",
+      "scene": "reef",
+      "place": "Raja Ampat",
+      "country": "Endonezya",
+      "lonlat": [
+        130.52,
+        -0.5
+      ],
+      "text": "Raja Ampat. Bilinen mercan türlerinin yaklaşık dörtte üçü burada.",
+      "onscreen": "~%75",
+      "kicker": "bilinen mercan türlerinin",
+      "visual": "Renkli mercan dalları alttan büyür, balık sürüleri sağdan sola akar. Sol üstte dört kareden üçü sırayla dolar (oran grafiği).",
+      "why": "Boşluktan bolluğa: renk ve yoğunluk patlaması.",
+      "sfx": "Whoosh + parlak kabarcıklar."
+    },
+    {
+      "id": "i4",
+      "scene": "octopus",
+      "place": "Lembeh Boğazı",
+      "country": "Endonezya",
+      "lonlat": [
+        125.23,
+        1.45
+      ],
+      "text": "Lembeh Boğazı. Başka hayvanların kılığına giren bir ahtapot.",
+      "onscreen": "Taklitçi ahtapot",
+      "kicker": "Siyah kumlu 'muck' dalışı",
+      "visual": "Koyu kum zemin; çizgili ahtapot kollarını dalgalandırır, ardından yassılaşıp yassı balık silüetine dönüşür (nesne dönüşümü). Etiket 'ahtapot'tan '→ yassı balık taklidi'ne değişir.",
+      "why": "Bolluktan saklanmaya: göz yanılması.",
+      "sfx": "Whoosh. (Öneri: yumuşak 'morph' efekti.)"
+    },
+    {
+      "id": "i5",
+      "scene": "wreck",
+      "place": "Chuuk Lagünü",
+      "country": "Mikronezya",
+      "lonlat": [
+        151.85,
+        7.42
+      ],
+      "tts": "Çuk Lagünü. Bin dokuz yüz kırk dörtte batan bir filo, şimdi mercan bahçesi.",
+      "text": "Chuuk Lagünü. 1944'te batan bir filo, şimdi mercan bahçesi.",
+      "onscreen": "Şubat 1944",
+      "kicker": "Hailstone Harekâtı",
+      "visual": "Yan yatmış gemi silüeti dipte; gövdede mercan noktaları zamanla çoğalır. Sol üstte yıl sayacı 1944'ten 2026'ya akar.",
+      "why": "Doğadan tarihe: zaman ölçeği değişir.",
+      "sfx": "Whoosh. (Öneri: uzak metal gıcırtısı.)"
+    },
+    {
+      "id": "i6",
+      "scene": "sharks",
+      "place": "Darwin Adası",
+      "country": "Galápagos, Ekvador",
+      "lonlat": [
+        -91.99,
+        1.68
+      ],
+      "tts": "Galapagos. Dünyanın en büyük köpekbalığı biyokütlesi.",
+      "text": "Galápagos. Dünyanın en büyük köpekbalığı biyokütlesi.",
+      "onscreen": "En büyük köpekbalığı biyokütlesi",
+      "kicker": "Darwin ve Wolf adaları",
+      "visual": "Çekiç başlı köpekbalığı silüetleri üç derinlik katmanında farklı hız ve ölçekle (paralaks) geçer; sayıları artarak kadrajı doldurur.",
+      "why": "Tek canlıdan kalabalığa.",
+      "sfx": "Whoosh. (Öneri: akıntı sesi yükselişi.)"
+    },
+    {
+      "id": "i7",
+      "scene": "sardines",
+      "place": "Sardalya Göçü",
+      "country": "Güney Afrika",
+      "lonlat": [
+        29.55,
+        -31.63
+      ],
+      "text": "Güney Afrika. Kışın milyonlarca sardalya, peşlerinde yunuslar.",
+      "onscreen": "Mayıs–Temmuz",
+      "kicker": "Wild Coast · KwaZulu-Natal",
+      "visual": "~2.200 gümüş parçacık dönen bir 'yem topu' oluşturur; üç yunus silüeti içinden geçerken parçacıkları iterek tünel açar.",
+      "why": "Sabit noktadan mevsimlik olaya.",
+      "sfx": "Whoosh."
+    },
+    {
+      "id": "i8",
+      "scene": "tornado",
+      "place": "Sipadan",
+      "country": "Malezya",
+      "lonlat": [
+        118.63,
+        4.11
+      ],
+      "text": "Sipadan. Dönen bir barakuda hortumu.",
+      "onscreen": "Barakuda hortumu",
+      "kicker": "Barracuda Point",
+      "visual": "~900 barakuda çizgisi derinliğe göre parlaklık alarak sarmal (heliks) çizip döner; altta küçük dalgıç ölçek verir.",
+      "why": "Top biçiminden sarmala: hareket kuralı değişir.",
+      "sfx": "Whoosh."
+    },
+    {
+      "id": "i9",
+      "scene": "manta",
+      "place": "Socorro",
+      "country": "Meksika",
+      "lonlat": [
+        -110.95,
+        18.78
+      ],
+      "tts": "Sokorro. Kanatları yedi metreyi bulabilen mantalar, dalgıçların üstünde.",
+      "text": "Socorro. Kanatları yedi metreyi bulabilen mantalar, dalgıçların üstünde.",
+      "onscreen": "Kanat açıklığı ~7 m",
+      "kicker": "Revillagigedo Adaları",
+      "visual": "Dev manta silüeti kanat çırparak süzülür, altında küçük dalgıç ve kabarcıkları; yatay ölçek çizgisi açılıp '~7 m' etiketini gösterir.",
+      "why": "Ölçek şoku: insan küçülür.",
+      "sfx": "Whoosh + alçak 'thump'."
+    },
+    {
+      "id": "i10",
+      "scene": "steps",
+      "place": "Yonaguni",
+      "country": "Japonya",
+      "lonlat": [
+        123.01,
+        24.43
+      ],
+      "text": "Ve Yonaguni, Japonya. Merdiven gibi kayalar. Çoğu jeolog doğal diyor; tartışma sürüyor.",
+      "onscreen": "Doğal mı, yapı mı?",
+      "kicker": "Çoğunluk görüşü: doğal",
+      "visual": "İzometrik basamak blokları gecikmeli olarak aşağıdan yükselir (3D benzeri motion graphics); sağ üstte soru işareti belirip söner.",
+      "why": "Canlılardan gizeme; finale köprü.",
+      "sfx": "Whoosh + kısa taş 'tok' vurgusu."
+    },
+    {
+      "id": "payoff",
+      "scene": "grid",
+      "text": "Yani egzotik, uzaklık değil. Kuralın bozulduğunu gördüğün an.",
+      "onscreen": "Egzotik = bozulan kural",
+      "kicker": "",
+      "visual": "On noktanın adı ve tek kelimelik 'bozulan kural' etiketi 2×5 kartta sırayla belirir; arkada soluk dünya haritası.",
+      "why": "Açılıştaki vaadin karşılığı: on kural tek bakışta.",
+      "sfx": "Whoosh + 'thump' vurgusu."
+    },
+    {
+      "id": "cta",
+      "scene": "end",
+      "text": "Seni en çok hangisi şaşırttı? Yoruma numarasını yaz.",
+      "onscreen": "Yoruma bir numara yaz",
+      "kicker": "01–10",
+      "visual": "01–10 numaraları altı çizgili iki satırda belirir, altta imleç yanıp söner; son 0,6 sn'de karartma.",
+      "why": "Tek çağrı: yorum.",
+      "sfx": "Müzik yatağı kapanışa iner."
+    }
+  ],
+  "grid_labels": [
+    "Silfra · Levhalar",
+    "Angelita · Bulut",
+    "Raja Ampat · Çeşitlilik",
+    "Lembeh · Kılık",
+    "Chuuk · Zaman",
+    "Darwin · Kalabalık",
+    "Sardalya · Mevsim",
+    "Sipadan · Sarmal",
+    "Socorro · Ölçek",
+    "Yonaguni · Gizem"
+  ],
+  "publish": {
+    "covers": [
+      "Su altının kuralları burada bozuluyor",
+      "10 dalış noktası, 10 imkânsız sahne",
+      "Suyun içinde bir bulut?"
+    ],
+    "caption": "İki kıta levhası arasında yüzmek, 30 metrede bir bulut, dönen bir barakuda hortumu… Egzotik dalışı uzaklık değil, su altında bozulan kural belirliyor. Bu bir editoryal seçki, sıralama değil. Senin listende hangisi var?",
+    "tags": [
+      "#dalış",
+      "#scubadiving",
+      "#sualtı",
+      "#seyahat",
+      "#okyanus"
+    ]
+  },
+  "sources": [
+    [
+      "Silfra: levhalar, ~100 m görüş, 2–4 °C",
+      "https://www.thingvellir.is/en/education/nature/silfra/"
+    ],
+    [
+      "Silfra (genel)",
+      "https://en.wikipedia.org/wiki/Silfra"
+    ],
+    [
+      "Cenote Angelita: ~30 m hidrojen sülfür bulutu (kaynaklar 28–36 m arası veriyor)",
+      "https://www.discoverwildlife.com/environment/cenote-angelita"
+    ],
+    [
+      "Raja Ampat: mercan türlerinin ~%75'i",
+      "https://wwf.panda.org/knowledge_hub/where_we_work/coraltriangle/coraltrianglefacts/places/rajaampatindonesia"
+    ],
+    [
+      "Raja Ampat (genel)",
+      "https://en.wikipedia.org/wiki/Raja_Ampat"
+    ],
+    [
+      "Lembeh: taklitçi ahtapot, muck dalışı",
+      "https://blog.padi.com/diving-in-lembeh/"
+    ],
+    [
+      "Chuuk / Hailstone Harekâtı, 17–18 Şubat 1944",
+      "https://history.navy.mil/about-us/leadership/director/directors-corner/h-grams/h-gram-026/H-026-3.html"
+    ],
+    [
+      "Darwin & Wolf: dünyanın en büyük köpekbalığı biyokütlesi",
+      "https://www.darwinfoundation.org/en/news/all-news-stories/northern-galapagos-islands-home-to-world-s-largest-shark-biomass/"
+    ],
+    [
+      "Sardalya göçü: kış, Mayıs–Temmuz",
+      "https://shark.co.za/sardine-run/"
+    ],
+    [
+      "Sipadan: barakuda hortumu",
+      "https://www.dive-the-world.com/posts/sipadan/scuba-diving-sipadan-island-barracuda-tornadoes.php"
+    ],
+    [
+      "Socorro: dev okyanus mantası, ~7 m",
+      "https://divernet.com/world-dives/north-central-america/giant-manta-rays-mexico-revillagigedo/"
+    ],
+    [
+      "Yonaguni: çoğunluk görüşü doğal oluşum, tartışmalı",
+      "https://en.wikipedia.org/wiki/Yonaguni_Monument"
+    ]
+  ]
+}
