@@ -108,6 +108,13 @@ class Ctx:
         self.land = land
         self.sites = [s for s in ep["segments"] if "lonlat" in s]
         self.cache = {}
+        self.images = {}
+
+    def image(self, path):
+        if path not in self.images:
+            self.images[path] = skia.Image.MakeFromEncoded(skia.Data.MakeFromFileName(path)) \
+                if path and os.path.exists(path) else None
+        return self.images[path]
 
     def c(self, key, a=None):
         return hexc(self.pal[key], 1.0 if a is None else a)
@@ -685,8 +692,19 @@ def p_grid(canvas, ctx, r, t, p, seg):
             continue
         bx = x + 20 + col * (cw + 20)
         by = y + 20 + row * (ch_ + 5) + (1 - k) * 30
-        canvas.drawRRect(skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(bx, by, cw, ch_ - 10), 16, 16),
-                         paint(ctx.c("deep"), 0.72 * k))
+        rr = skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(bx, by, cw, ch_ - 10), 16, 16)
+        site = ctx.sites[i] if i < len(ctx.sites) else {}
+        img = ctx.image(site.get("media", {}).get("_path"))
+        if img is not None:
+            canvas.save()
+            canvas.clipRRect(rr, True)
+            canvas.saveLayerAlpha(None, int(255 * k))
+            draw_cover(canvas, img, (bx, by, cw, ch_ - 10), site["media"].get("focus", [0.5, 0.5]), 1.0 + 0.05 * t)
+            canvas.drawRect(skia.Rect.MakeXYWH(bx, by, cw, ch_ - 10), paint(ctx.c("deep"), 0.55))
+            canvas.restore()
+            canvas.restore()
+        else:
+            canvas.drawRRect(rr, paint(ctx.c("deep"), 0.72 * k))
         name, rule = (lab.split(" · ") + [""])[:2]
         text(canvas, f"{i + 1:02d}", bx + 22, by + 52, 30, ctx.c("accent"), "bold", k)
         text(canvas, name, bx + 80, by + 52, 30, ctx.c("ink"), "semi", k)
@@ -720,6 +738,57 @@ def p_typo(canvas, ctx, r, t, p, seg):
                     paint(ctx.c("accent")))
 
 
+SAMPLING = skia.SamplingOptions(skia.FilterMode.kLinear, skia.MipmapMode.kLinear)
+
+
+def draw_cover(canvas, img, r, focus=(0.5, 0.5), zoom=1.0, pan=(0.0, 0.0)):
+    """Görseli r alanını dolduracak şekilde kırp (cover), odak noktası ve zoom ile."""
+    x, y, w, h = r
+    iw, ih = img.width(), img.height()
+    s = max(w / iw, h / ih) * zoom
+    sw, sh = w / s, h / s
+    cx = min(max(iw * (focus[0] + pan[0]), sw / 2), iw - sw / 2)
+    cy = min(max(ih * (focus[1] + pan[1]), sh / 2), ih - sh / 2)
+    src = skia.Rect.MakeXYWH(cx - sw / 2, cy - sh / 2, sw, sh)
+    canvas.drawImageRect(img, src, skia.Rect.MakeXYWH(x, y, w, h), SAMPLING)
+
+
+def p_photo(canvas, ctx, r, t, p, seg):
+    """Gerçek fotoğraf: Ken Burns (yavaş zoom + kaydırma), okunabilirlik için koyulaştırma."""
+    m = seg["media"]
+    img = ctx.image(m.get("_path"))
+    if img is None:
+        return PAINTERS.get(seg.get("scene"), p_typo)(canvas, ctx, r, t, p, seg)
+    z0, z1 = m.get("zoom", [1.04, 1.14])
+    k = ease(p) * 0.85 + p * 0.15
+    pan = m.get("pan", [0.0, 0.0])
+    x, y, w, h = r
+    if m.get("fit") == "contain":
+        # düşük çözünürlük / yatay kare: arkada bulanık geniş kopya, önde keskin görsel
+        bp = skia.Paint(ImageFilter=skia.ImageFilters.Blur(30, 30))
+        canvas.saveLayer(None, bp)
+        draw_cover(canvas, img, r, m.get("focus", [0.5, 0.5]), 1.1)
+        canvas.restore()
+        canvas.drawRect(skia.Rect.MakeXYWH(x, y, w, h), paint(ctx.c("deep"), 0.45))
+        z = lerp(z0, z1, k)
+        iw = PANEL[2] * z
+        ih = iw * img.height() / img.width()
+        cx, cy = x + w / 2 - 35, PANEL[1] + PANEL[3] / 2
+        dst = skia.Rect.MakeXYWH(cx - iw / 2, cy - ih / 2, iw, ih)
+        canvas.save()
+        canvas.clipRRect(skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(PANEL[0], cy - min(ih, PANEL[3]) / 2, PANEL[2],
+                                                                    min(ih, PANEL[3])), 24, 24), True)
+        canvas.drawImageRect(img, dst, SAMPLING)
+        canvas.restore()
+    else:
+        draw_cover(canvas, img, r, m.get("focus", [0.5, 0.5]), lerp(z0, z1, k), (pan[0] * k, pan[1] * k))
+    canvas.drawRect(skia.Rect.MakeXYWH(x, y, w, h), paint(ctx.c("deep"), 0.12))  # mat ton
+    for y0, y1, a0, a1 in ((y, y + 560, 0.62, 0.0), (y + h * 0.56, y + h, 0.0, 0.82)):
+        sh = skia.GradientShader.MakeLinear([skia.Point(0, y0), skia.Point(0, y1)],
+                                            [skia.Color4f(0, 0.02, 0.04, a0), skia.Color4f(0, 0.02, 0.04, a1)])
+        canvas.drawRect(skia.Rect.MakeXYWH(x, y0, w, y1 - y0), skia.Paint(Shader=sh))
+
+
 PAINTERS = {"silfra": p_silfra, "angelita": p_angelita, "reef": p_reef, "octopus": p_octopus,
             "wreck": p_wreck, "sharks": p_sharks, "sardines": p_sardines, "tornado": p_tornado,
             "manta": p_manta, "steps": p_steps, "title": p_title, "grid": p_grid, "end": p_end,
@@ -730,7 +799,7 @@ PAINTERS = {"silfra": p_silfra, "angelita": p_angelita, "reef": p_reef, "octopus
 def scene_rect(sc, t):
     """Kanca sahnesi tam ekran; ilk liste öğesi tam ekrandan panele küçülür."""
     full = (0, 0, W, H)
-    if sc.get("fullbleed"):
+    if sc.get("fullbleed") or sc["seg"].get("media", {}).get("_path"):
         return full
     if sc.get("zoom_from_full"):
         k = ease((t - 0.05) / 0.7)
@@ -746,8 +815,13 @@ def draw_scene(canvas, ctx, sc, t, alpha):
     rr = skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(*r), 28 if r != (0, 0, W, H) else 0, 28 if r != (0, 0, W, H) else 0)
     canvas.save()
     canvas.clipRRect(rr, True)
-    PAINTERS.get(sc["scene"], p_typo)(canvas, ctx, r, t, p, seg)
+    if seg.get("media", {}).get("_path"):
+        p_photo(canvas, ctx, r, t, p, seg)
+    else:
+        PAINTERS.get(sc["scene"], p_typo)(canvas, ctx, r, t, p, seg)
     canvas.restore()
+    if r == (0, 0, W, H) and "lonlat" in seg:
+        draw_minimap(canvas, ctx, sc, t, (0, 200, W - 50, 0), small=True)
     if r != (0, 0, W, H):
         canvas.drawRRect(rr, paint(ctx.c("ink"), 0.12, stroke=2))
         if "lonlat" in seg:
@@ -756,8 +830,8 @@ def draw_scene(canvas, ctx, sc, t, alpha):
     canvas.restore()
 
 
-def draw_minimap(canvas, ctx, sc, t, r):
-    mw, mh = 250, 125
+def draw_minimap(canvas, ctx, sc, t, r, small=False):
+    mw, mh = (220, 110) if small else (250, 125)
     mx, my = r[0] + r[2] - mw - 18, r[1] + 18
     canvas.drawRRect(skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(mx - 8, my - 8, mw + 16, mh + 16), 12, 12),
                      paint(ctx.c("deep"), 0.7))
@@ -783,6 +857,13 @@ def draw_header(canvas, ctx, sc, t):
              28, ctx.c("muted"), "semi", k)
         size = 84 if text_width(seg["place"], 84) < 820 else 68
         text(canvas, seg["place"], 76, 360 + dy, size, ctx.c("ink"), "bold", k)
+        rep = seg.get("media", {}).get("representative")
+        if rep and seg["media"].get("_path"):
+            lab = f"TEMSİLÎ GÖRÜNTÜ · {rep}"
+            tw = text_width(lab, 24, "semi")
+            canvas.drawRRect(skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(78, 388 + dy, tw + 28, 38), 19, 19),
+                             paint("#000000", 0.45 * k))
+            text(canvas, lab, 92, 415 + dy, 24, ctx.c("sand"), "semi", k)
         # bilgi bloğu panelin altında
         fy = PANEL[1] + PANEL[3] + 92
         fs = 66 if text_width(seg["onscreen"], 66) < 860 else 52
@@ -802,6 +883,8 @@ def draw_header(canvas, ctx, sc, t):
         lines = wrap(seg["onscreen"], 70, 860)
         for i, ln in enumerate(lines[:2]):
             text(canvas, ln, 76, 345 + i * 82 + dy, 70, ctx.c("ink"), "bold", k)
+    if seg.get("_credit"):
+        text(canvas, seg["_credit"], 80, 1372, 21, "#FFFFFF", "reg", 0.72 * k)
 
 
 def draw_caption(canvas, ctx, cues, tt):

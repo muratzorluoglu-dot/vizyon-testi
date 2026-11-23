@@ -19,6 +19,22 @@ python3 reels/make.py build reels/episodes/<slug>                   # tam render
 python3 reels/make.py still reels/episodes/<slug> 12.5              # tek kare PNG
 ```
 
+## Gerçek görüntüler (Wikimedia Commons)
+
+Segmentte `media` alanı varsa sahne tam ekran gerçek fotoğrafla (yavaş zoom/kaydırma) çizilir:
+
+```json
+"media": {"commons": "File:SCUBA Silfra.jpg", "focus": [0.5, 0.5], "zoom": [1.0, 1.12],
+          "fit": "contain", "representative": "Moalboal, Filipinler"}
+```
+
+- `python3 reels/make.py media reels/episodes/<slug>` görselleri `media/<id>.jpg` olarak indirir, yazar/lisansı `media/credits.json`'a yazar (`build` bunu otomatik de yapar).
+- Kabul edilen lisanslar: CC0, kamu malı, CC BY, CC BY-SA (BY-SA kullanılırsa video da CC BY-SA ile yayınlanmalıdır).
+- `fit: "contain"` düşük çözünürlüklü görselleri bulanık arka planla çerçeveler.
+- `representative` dolu ise ekranda "TEMSİLÎ GÖRÜNTÜ" etiketi çıkar (tür doğru, konum birebir o nokta değil).
+- Her fotoğrafın atfı ekranda ve `script.md` içinde yer alır.
+- Wikimedia bulut IP'lerini sınırlayabilir (HTTP 429); bu durumda `media` komutunu kendi bilgisayarında çalıştırıp `media/` klasörünü commit et.
+
 ## Seslendirme (Google Cloud Text-to-Speech)
 
 Anahtar yalnızca ortam değişkeninden okunur, hiçbir dosyaya yazılmaz:

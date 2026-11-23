@@ -39,7 +39,18 @@
       "kicker": "",
       "visual": "Tam ekran: siyah bazalt duvarlar arasında buz mavisi yarık, ışık huzmeleri; dalgıç silüeti ayak vuruşlarıyla aşağı süzülür, kabarcıklar yükselir.",
       "why": "İlk karede vaat: sıra dışı bir su altı. Ses ve görüntü aynı şeyi söyler.",
-      "sfx": "Alçak 'thump' + kabarcık sesleri; sentez müzik yatağı yumuşakça girer."
+      "sfx": "Alçak 'thump' + kabarcık sesleri; sentez müzik yatağı yumuşakça girer.",
+      "media": {
+        "commons": "File:SCUBA Silfra.jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.0,
+          1.12
+        ]
+      }
     },
     {
       "id": "context",
@@ -65,7 +76,22 @@
       "kicker": "Su 2–4 °C",
       "visual": "Kanca sahnesindeki yarık tam ekrandan panele küçülür (aynı mekân, şimdi adıyla). Solda 0 m'den '100 m görüş'e uzayan ölçek çizgisi; köşede mini harita İzlanda'yı işaretler.",
       "why": "Hook'taki sahnenin karşılığı ve adı.",
-      "sfx": "Whoosh + kabarcıklar."
+      "sfx": "Whoosh + kabarcıklar.",
+      "media": {
+        "commons": "File:Silfra waters.jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.02,
+          1.14
+        ],
+        "pan": [
+          0,
+          -0.03
+        ]
+      }
     },
     {
       "id": "i2",
@@ -81,7 +107,18 @@
       "kicker": "Tatlı su / tuzlu su sınırı",
       "visual": "Dikey mağara kuyusu; dalgıç feneri aşağı iner. Ortada sütlü, dalgalanan bulut katmanı, içinden kuru dallar çıkar; '~30 m' derinlik çizgisi. Mini harita pin'i Meksika'ya kayar.",
       "why": "Görüşten bulanıklığa: berraklık kuralının tersi.",
-      "sfx": "Whoosh + derin 'thump'."
+      "sfx": "Whoosh + derin 'thump'.",
+      "media": {
+        "commons": "File:Mexico cenotes Angelita Tom Sladek.jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.0,
+          1.1
+        ]
+      }
     },
     {
       "id": "i3",
@@ -97,7 +134,18 @@
       "kicker": "bilinen mercan türlerinin",
       "visual": "Renkli mercan dalları alttan büyür, balık sürüleri sağdan sola akar. Sol üstte dört kareden üçü sırayla dolar (oran grafiği).",
       "why": "Boşluktan bolluğa: renk ve yoğunluk patlaması.",
-      "sfx": "Whoosh + parlak kabarcıklar."
+      "sfx": "Whoosh + parlak kabarcıklar.",
+      "media": {
+        "commons": "File:RajaAmpat dd4-5 017.jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.0,
+          1.12
+        ]
+      }
     },
     {
       "id": "i4",
@@ -113,7 +161,18 @@
       "kicker": "Siyah kumlu 'muck' dalışı",
       "visual": "Koyu kum zemin; çizgili ahtapot kollarını dalgalandırır, ardından yassılaşıp yassı balık silüetine dönüşür (nesne dönüşümü). Etiket 'ahtapot'tan '→ yassı balık taklidi'ne değişir.",
       "why": "Bolluktan saklanmaya: göz yanılması.",
-      "sfx": "Whoosh. (Öneri: yumuşak 'morph' efekti.)"
+      "sfx": "Whoosh. (Öneri: yumuşak 'morph' efekti.)",
+      "media": {
+        "commons": "File:Mimic octopus (Thaumoctopus mimicus) (41607220955).jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.0,
+          1.12
+        ]
+      }
     },
     {
       "id": "i5",
@@ -130,7 +189,19 @@
       "kicker": "Hailstone Harekâtı",
       "visual": "Yan yatmış gemi silüeti dipte; gövdede mercan noktaları zamanla çoğalır. Sol üstte yıl sayacı 1944'ten 2026'ya akar.",
       "why": "Doğadan tarihe: zaman ölçeği değişir.",
-      "sfx": "Whoosh. (Öneri: uzak metal gıcırtısı.)"
+      "sfx": "Whoosh. (Öneri: uzak metal gıcırtısı.)",
+      "media": {
+        "commons": "File:Nippo maru.jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.0,
+          1.06
+        ],
+        "fit": "contain"
+      }
     },
     {
       "id": "i6",
@@ -147,7 +218,18 @@
       "kicker": "Darwin ve Wolf adaları",
       "visual": "Çekiç başlı köpekbalığı silüetleri üç derinlik katmanında farklı hız ve ölçekle (paralaks) geçer; sayıları artarak kadrajı doldurur.",
       "why": "Tek canlıdan kalabalığa.",
-      "sfx": "Whoosh. (Öneri: akıntı sesi yükselişi.)"
+      "sfx": "Whoosh. (Öneri: akıntı sesi yükselişi.)",
+      "media": {
+        "commons": "File:Bogenstirn-Hammerhaie Sphyrna lewini Schule in Galapagos.jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.0,
+          1.1
+        ]
+      }
     },
     {
       "id": "i7",
@@ -163,7 +245,19 @@
       "kicker": "Wild Coast · KwaZulu-Natal",
       "visual": "~2.200 gümüş parçacık dönen bir 'yem topu' oluşturur; üç yunus silüeti içinden geçerken parçacıkları iterek tünel açar.",
       "why": "Sabit noktadan mevsimlik olaya.",
-      "sfx": "Whoosh."
+      "sfx": "Whoosh.",
+      "media": {
+        "commons": "File:2014 11 Moalboal 21 sardine run (16024303526).jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.0,
+          1.1
+        ],
+        "representative": "Moalboal, Filipinler"
+      }
     },
     {
       "id": "i8",
@@ -179,7 +273,19 @@
       "kicker": "Barracuda Point",
       "visual": "~900 barakuda çizgisi derinliğe göre parlaklık alarak sarmal (heliks) çizip döner; altta küçük dalgıç ölçek verir.",
       "why": "Top biçiminden sarmala: hareket kuralı değişir.",
-      "sfx": "Whoosh."
+      "sfx": "Whoosh.",
+      "media": {
+        "commons": "File:Sphyraena qenie 260768728.jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.0,
+          1.1
+        ],
+        "representative": "Malezya, nokta belirtilmemiş"
+      }
     },
     {
       "id": "i9",
@@ -196,7 +302,19 @@
       "kicker": "Revillagigedo Adaları",
       "visual": "Dev manta silüeti kanat çırparak süzülür, altında küçük dalgıç ve kabarcıkları; yatay ölçek çizgisi açılıp '~7 m' etiketini gösterir.",
       "why": "Ölçek şoku: insan küçülür.",
-      "sfx": "Whoosh + alçak 'thump'."
+      "sfx": "Whoosh + alçak 'thump'.",
+      "media": {
+        "commons": "File:Giant oceanic manta ray with diver.jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.0,
+          1.08
+        ],
+        "representative": "çekim yeri belirtilmemiş"
+      }
     },
     {
       "id": "i10",
@@ -212,7 +330,18 @@
       "kicker": "Çoğunluk görüşü: doğal",
       "visual": "İzometrik basamak blokları gecikmeli olarak aşağıdan yükselir (3D benzeri motion graphics); sağ üstte soru işareti belirip söner.",
       "why": "Canlılardan gizeme; finale köprü.",
-      "sfx": "Whoosh + kısa taş 'tok' vurgusu."
+      "sfx": "Whoosh + kısa taş 'tok' vurgusu.",
+      "media": {
+        "commons": "File:Yonaguni Monument Main Terrace Stair.jpg",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "zoom": [
+          1.0,
+          1.12
+        ]
+      }
     },
     {
       "id": "payoff",

@@ -7,6 +7,7 @@ Kullanım:
   python3 reels/make.py build reels/episodes/<slug> --preview    # yarım çözünürlük hızlı deneme
   python3 reels/make.py still reels/episodes/<slug> 12.5         # tek kare PNG
   python3 reels/make.py docs reels/episodes/<slug>               # yalnızca metin paketini yenile
+  python3 reels/make.py media reels/episodes/<slug>              # yalnızca Commons görsellerini indir
 
 Akış: episode.json -> (Google TTS) -> süre ölçümü -> zamanlama -> SRT ->
       sahne verisi -> ses miksi -> render (MP4) -> ffprobe kontrolü -> script.md
@@ -138,7 +139,7 @@ def mmss(t):
     return f"{int(t // 60)}:{t % 60:04.1f}"
 
 
-def write_docs(ep, tl, cues, out_dir, srt_name, status):
+def write_docs(ep, tl, cues, out_dir, srt_name, status, credits=None):
     b = ep["brief"]
     L = []
     L.append(f"# {ep['title']}\n")
@@ -182,9 +183,17 @@ def write_docs(ep, tl, cues, out_dir, srt_name, status):
         L.append("**Kaynaklar (editör için):**\n")
         for label, url in ep["sources"]:
             L.append(f"- {label}: {url}")
-    L.append("\n**Görsel ve ses varlıkları:** Tüm görseller kodla çizilmiş temsili motion graphics'tir (gerçek görüntü değildir). "
+    if credits:
+        L.append("\n**Fotoğraf atıfları (açıklamaya da eklenmeli; CC BY lisansı atıf ister):**\n")
+        for seg in ep["segments"]:
+            c = credits.get(seg["id"])
+            if c:
+                rep = " — _temsilî görüntü, konum birebir bu nokta değil_" if seg.get("media", {}).get("representative") else ""
+                L.append(f"- {seg.get('place', seg['id'])}: “{c['title'][5:]}”, {c['artist'][:80]}, {c['license']} ({c['license_url']}), {c['page']}{rep}")
+        L.append("\nFotoğraflar kırpıldı, yavaş zoom/kaydırma uygulandı ve renkleri koyulaştırıldı (değişiklik yapılmıştır).")
+    L.append("\n**Diğer varlıklar:** Harita, oran/ölçek grafikleri ve fotoğrafı olmayan sahneler kodla çizilmiş motion graphics'tir. "
              "Harita: Natural Earth 1:110m kara verisi (kamu malı), world-atlas paketi (ISC). Müzik ve efektler kodla sentezlendi. "
-             "Yazı tipi: Inter (SIL OFL). Gerçek saha görüntüsü eklenecekse lisanslı stok veya izinli dalgıç çekimi kullanın.\n")
+             "Yazı tipi: Inter (SIL OFL).\n")
     L.append("## 6. Üretim durumu\n")
     for line in status:
         L.append(f"- {line}")
@@ -243,10 +252,31 @@ def cmd_new(title):
     return d
 
 
+def attach_media(ep, ep_dir, download=True):
+    """Görselleri indir (gerekirse) ve segmentlere yerel yol + kısa atıf ekle."""
+    import media
+    credits = media.fetch(ep, ep_dir) if download else {}
+    cpath = os.path.join(ep_dir, "media", "credits.json")
+    if not credits and os.path.exists(cpath):
+        credits = json.load(open(cpath, encoding="utf-8"))
+    for seg in ep["segments"]:
+        m = seg.get("media")
+        path = os.path.join(ep_dir, "media", f"{seg['id']}.jpg")
+        if m and seg["id"] in credits and os.path.exists(path):
+            m["_path"] = path
+            seg["_credit"] = media.short_credit(credits[seg["id"]]) + (" · Temsilî görüntü" if m.get("representative") else "")
+    return credits
+
+
 def cmd_build(ep_dir, preview=False, frames=None):
     import audio, render, tts
     ep = json.load(open(os.path.join(ep_dir, "episode.json"), encoding="utf-8"))
     status = []
+    print("0/6 Görseller")
+    credits = attach_media(ep, ep_dir)
+    want = sum(1 for s in ep["segments"] if s.get("media"))
+    if want:
+        status.append(f"Görseller: {len(credits)}/{want} Wikimedia Commons dosyası → media/ (atıflar media/credits.json)")
     print("1/6 Seslendirme")
     measured = tts.synthesize(ep["segments"], ep.get("voice", {}), ep_dir) if tts.available() else None
     if measured:
@@ -283,7 +313,7 @@ def cmd_build(ep_dir, preview=False, frames=None):
     status.append(f"Video: {os.path.basename(out)} — {info['width']}×{info['height']} "
                   f"({info['width'] / info['height']:.4f} ≈ 9:16), {info['fps']:.0f} fps, "
                   f"{info['duration']:.2f} sn, ses akışı: {info['audio']}" + ("" if ok else " ⚠ çözünürlük beklenenden farklı"))
-    write_docs(ep, tl, cues, ep_dir, srt_name, status)
+    write_docs(ep, tl, cues, ep_dir, srt_name, status, credits)
     status_print = "\n".join(status)
     print(status_print)
     return info
@@ -305,17 +335,19 @@ def cmd_docs(ep_dir):
             measured = None
     tl = build_timeline(ep, measured)
     cues = build_cues(tl)
+    credits = attach_media(ep, ep_dir, download=False)
     srt_name = "altyazi.srt" if measured else "altyazi.taslak.srt"
     write_srt(cues, os.path.join(ep_dir, srt_name))
     status = [l[2:] for l in open(os.path.join(ep_dir, "script.md"), encoding="utf-8").read()
               .split("## 6. Üretim durumu")[-1].strip().splitlines() if l.startswith("- ")]
-    write_docs(ep, tl, cues, ep_dir, srt_name, status)
+    write_docs(ep, tl, cues, ep_dir, srt_name, status, credits)
     print(os.path.join(ep_dir, "script.md"))
 
 
 def cmd_still(ep_dir, t):
     import render
     ep = json.load(open(os.path.join(ep_dir, "episode.json"), encoding="utf-8"))
+    attach_media(ep, ep_dir, download=False)
     tl = build_timeline(ep)
     cues = build_cues(tl)
     out = os.path.join(ep_dir, f"still_{t:05.1f}.png")
@@ -332,6 +364,8 @@ def main():
     b.add_argument("episode_dir")
     b.add_argument("--preview", action="store_true")
     b.add_argument("--frames", type=int)
+    md = sub.add_parser("media")
+    md.add_argument("episode_dir")
     dc = sub.add_parser("docs")
     dc.add_argument("episode_dir")
     s = sub.add_parser("still")
@@ -342,6 +376,13 @@ def main():
         cmd_new(a.title)
     elif a.cmd == "build":
         cmd_build(a.episode_dir, a.preview, a.frames)
+    elif a.cmd == "media":
+        ep = json.load(open(os.path.join(a.episode_dir, "episode.json"), encoding="utf-8"))
+        import media
+        c = media.fetch(ep, a.episode_dir)
+        want = [s["id"] for s in ep["segments"] if s.get("media")]
+        missing = [i for i in want if i not in c or not os.path.exists(os.path.join(a.episode_dir, "media", f"{i}.jpg"))]
+        print(f"{len(want) - len(missing)}/{len(want)} görsel hazır" + (f"; eksik: {', '.join(missing)}" if missing else ""))
     elif a.cmd == "docs":
         cmd_docs(a.episode_dir)
     else:
